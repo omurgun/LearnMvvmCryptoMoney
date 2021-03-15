@@ -10,24 +10,33 @@ import Foundation
 struct CryptoListViewModel {
     let cryptoCurrencyList: [CryptoCurrency]
     
-    func numberOfRowsInSection() -> Int {
-         return self.cryptoCurrencyList.count
-     }
-     
-     func cryptoAtIndex(_ index: Int) -> CryptoViewModel {
-         let crypto = self.cryptoCurrencyList[index]
-         return CryptoViewModel(crypto)
-     }
+   
 }
 
 
 struct CryptoViewModel {
     let crytpoCurrency: CryptoCurrency
     
-    init(_ crypto: CryptoCurrency) {
-        self.crytpoCurrency = crypto
-    }
+}
+
+
+
+
+extension CryptoListViewModel {
     
+    func numberOfRowsInSection() -> Int {
+         return self.cryptoCurrencyList.count
+     }
+     
+     func cryptoAtIndex(_ index: Int) -> CryptoViewModel {
+         let crypto = self.cryptoCurrencyList[index]
+         return CryptoViewModel(crytpoCurrency: crypto)
+     }
+}
+
+
+extension CryptoViewModel {
+
     var name: String {
         return self.crytpoCurrency.currency
     }
@@ -35,5 +44,6 @@ struct CryptoViewModel {
     var price: String {
         return self.crytpoCurrency.price
     }
-}
 
+    
+}
